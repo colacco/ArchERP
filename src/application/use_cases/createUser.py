@@ -21,4 +21,6 @@ class CreateUser():
             updated_at= datetime.now()
         )
 
+        user = self._repository.create_user(user)
+        
         return user
