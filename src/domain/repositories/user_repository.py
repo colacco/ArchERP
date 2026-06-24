@@ -8,7 +8,7 @@ class UserRepository(ABC):
         pass
 
     @abstractmethod
-    def get_user(self) -> User:
+    def get_users(self) -> list[User]:
         pass
 
     @abstractmethod
@@ -16,7 +16,7 @@ class UserRepository(ABC):
         pass
     
     @abstractmethod
-    def update_user(self, user: User) -> User:
+    def update_user(self, user: User, id: str) -> User:
         pass
 
     @abstractmethod

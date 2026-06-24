@@ -3,9 +3,14 @@ from src.domain.repositories.user_repository import UserRepository
 
 class InMemoryUserRepository(UserRepository):
     def __init__(self):
-        self.users = []
+        self.users: list[User] = []
 
     def create_user(self, user: User) -> User:
+        
+        for u in self.users:
+            if u.id == user.id:
+                raise ConnectionRefusedError("id já existente")
+
         self.users.append(user)
         return user
     
