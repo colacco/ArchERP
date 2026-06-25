@@ -5,13 +5,16 @@ from uuid import UUID
 from src.application.use_cases.create_user import CreateUser
 from src.application.use_cases.get_users import GetUser
 from src.application.use_cases.update_user import UpdateUser
+from src.application.use_cases.delete_user import DeleteUser
+
 from src.application.dtos.create_user_input import CreateUserInput
 from src.application.dtos.update_user_input import UpdateUserInput
+from src.application.dtos.user_output import UserOutput
 
 from src.presentation.http.schemas.user_response import UserResponse
 from src.presentation.http.schemas.create_user_request import CreateUserRequest
 from src.presentation.http.schemas.update_user_request import UpdateUserRequest
-from src.presentation.http.dependencies import make_get_user_use_case, make_create_user_use_case, make_update_user_use_case
+from src.presentation.http.dependencies import make_get_user_use_case, make_create_user_use_case, make_update_user_use_case, make_delete_user_use_case
 
 router = APIRouter(prefix="/users", tags=["users"])
 
@@ -34,5 +37,15 @@ def patch_user(user_id: UUID, body: UpdateUserRequest, use_case: Annotated[ Upda
         id=user.id, 
         role_id=user.role_id, 
         name=user.name, 
+        email=user.email
+    )
+
+@router.delete("/{user_id}", response_model=UserResponse)
+def delete_user(user_id: UUID, use_case: Annotated[ DeleteUser, Depends(make_delete_user_use_case)]):
+    user: UserOutput  = use_case.execute(user_id)
+    return UserResponse(
+        id=user.id,
+        role_id=user.role_id,
+        name=user.name,
         email=user.email
     )
