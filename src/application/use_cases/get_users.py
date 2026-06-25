@@ -2,7 +2,7 @@ from src.domain.entities.user import User
 from src.domain.repositories.user_repository import UserRepository
 from src.application.dtos.user_output import UserOutput
 
-class GetUser():
+class GetUsers():
     def __init__(self, repository: UserRepository):
         self._repository = repository
 
