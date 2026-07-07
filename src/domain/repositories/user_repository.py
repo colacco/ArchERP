@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from uuid import UUID
 
 from src.domain.entities.user import User
 
@@ -12,13 +13,17 @@ class UserRepository(ABC):
         pass
 
     @abstractmethod
-    def get_user_by_id(self, id: str) -> User:
-        pass
-    
-    @abstractmethod
-    def update_user(self, user: User, id: str) -> User:
+    def get_user_by_id(self, id: UUID) -> User | None:
         pass
 
     @abstractmethod
-    def delete_user(self, id: str) -> User:
+    def get_user_by_email(self, email: str) -> User | None:
+        pass
+    
+    @abstractmethod
+    def update_user(self, user: User, id: UUID) -> User:
+        pass
+
+    @abstractmethod
+    def delete_user(self, id: UUID) -> User:
         pass

@@ -10,7 +10,6 @@ from src.application.use_cases.delete_user import DeleteUser
 
 from src.application.dtos.create_user_input import CreateUserInput
 from src.application.dtos.update_user_input import UpdateUserInput
-from src.application.dtos.user_output import UserOutput
 
 from src.presentation.http.schemas.user_response import UserResponse
 from src.presentation.http.schemas.create_user_request import CreateUserRequest
@@ -22,17 +21,12 @@ router = APIRouter(prefix="/users", tags=["users"])
 @router.get("", response_model=list[UserResponse])
 def list_users(use_case: Annotated[ GetUsers, Depends(make_get_users_use_case)]):
     output = use_case.execute()
-    return [UserResponse.model_validate(o) for o in output]
+    return output
 
 @router.get("/{user_id}", response_model=UserResponse)
 def list_user(user_id: UUID, use_case: Annotated[ GetUser, Depends(make_get_user_use_case)] ):
     user = use_case.execute(user_id)
-    return UserResponse(
-        id=user.id,
-        role_id=user.role_id,
-        name=user.name,
-        email=user.email
-    )
+    return user
 
 
 @router.post("", response_model=UserResponse, status_code=201)
@@ -45,19 +39,9 @@ def create_user(body:CreateUserRequest, use_case: Annotated[ CreateUser , Depend
 def patch_user(user_id: UUID, body: UpdateUserRequest, use_case: Annotated[ UpdateUser, Depends(make_update_user_use_case)]):
     dto = UpdateUserInput(body.name, body.email)
     user = use_case.execute(user_id, dto)
-    return UserResponse(
-        id=user.id, 
-        role_id=user.role_id, 
-        name=user.name, 
-        email=user.email
-    )
+    return user
 
-@router.delete("/{user_id}", response_model=UserResponse)
+@router.delete("/{user_id}", status_code=204)
 def delete_user(user_id: UUID, use_case: Annotated[ DeleteUser, Depends(make_delete_user_use_case)]):
-    user: UserOutput  = use_case.execute(user_id)
-    return UserResponse(
-        id=user.id,
-        role_id=user.role_id,
-        name=user.name,
-        email=user.email
-    )
+    use_case.execute(user_id)
+    

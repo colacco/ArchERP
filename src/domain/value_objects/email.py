@@ -10,7 +10,7 @@ class Email:
         pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
         return bool(re.match(pattern, email))
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         normalized = self.value.strip().lower()
 
         if not self._is_valid(normalized):

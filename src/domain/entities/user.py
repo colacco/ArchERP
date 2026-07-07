@@ -16,5 +16,5 @@ class User():
     created_at: datetime
     updated_at: datetime
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Usuário: {self.name}\n Email: {self.email}"

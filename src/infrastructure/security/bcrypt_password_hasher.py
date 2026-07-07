@@ -10,8 +10,8 @@ class BcryptPasswordHasher(PasswordHasher):
         
         return hashed.decode("utf-8")
 
-    def verify(self, plain: str, hasehd: str) -> bool:
+    def verify(self, plain: str, hashed: str) -> bool:
         plain_bytes: bytes = plain.encode("utf-8")
-        hashed_bytes: bytes = hasehd.encode("utf-8")
+        hashed_bytes: bytes = hashed.encode("utf-8")
 
         return bcrypt.checkpw(plain_bytes, hashed_bytes)
