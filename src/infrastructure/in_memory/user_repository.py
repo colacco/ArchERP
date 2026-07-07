@@ -1,42 +1,44 @@
+from copy import deepcopy
+from uuid import UUID
+
 from src.domain.entities.user import User
 from src.domain.repositories.user_repository import UserRepository
+from src.domain.exceptions.user_not_found import UserNotFound
 
 class InMemoryUserRepository(UserRepository):
     def __init__(self):
         self.users: list[User] = []
 
     def create_user(self, user: User) -> User:
-        
-        for u in self.users:
-            if u.id == user.id:
-                raise ConnectionRefusedError("id já existente")
-
-        self.users.append(user)
+        self.users.append(deepcopy(user))
         return user
     
     def get_users(self) -> list[User]:
-        return self.users
+        return deepcopy(self.users)
 
-    def get_user_by_id(self, id: str) -> User:
-        return next((user for user in self.users if user.id == id), None)
+    def get_user_by_id(self, id: UUID) -> User | None:
+        user = next((user for user in self.users if user.id == id), None)
+        return deepcopy(user)
     
-    def update_user(self, data: User, id: str) -> User:
-        user = self.get_user_by_id(id)
+    def get_user_by_email(self, email: str) -> User | None:
+        user = next((user for user in self.users if user.email.value == email), None)
+        return deepcopy(user)
 
-        if not user:
-            return None
+    def update_user(self, user: User, id: UUID) -> User:
+        exist_user = self.get_user_by_id(id)
+
+        if not exist_user:
+            raise UserNotFound(id)
         
-        for key, value in vars(data).items():
-            if value is not None:
-                setattr(user, key, value)
+        index = next(i for i, u in enumerate(self.users) if u.id == id)
+        self.users[index] = deepcopy(user)
         
         return user
 
-    def delete_user(self, id: str) -> User:
-        user = self.get_user_by_id(id)
+    def delete_user(self, id: UUID) -> User:
+        index = next((i for i, u in enumerate(self.users) if u.id == id), None)
 
-        if not user:
-            return None
-        
-        self.users.remove(user)
-        return user
+        if index is None:
+            raise UserNotFound(id) 
+
+        return self.users.pop(index)
