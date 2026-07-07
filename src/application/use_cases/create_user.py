@@ -4,6 +4,8 @@ from datetime import datetime
 from src.domain.entities.user import User
 from src.domain.value_objects.email import Email
 from src.domain.repositories.user_repository import UserRepository
+from src.domain.exceptions.email_already_in_use import EmailAlreadyInUse
+
 from src.application.ports.password_hasher import PasswordHasher
 from src.application.dtos.create_user_input import CreateUserInput
 from src.application.dtos.user_output import UserOutput
@@ -13,9 +15,13 @@ class CreateUser():
         self._repository = repository
         self._hasher = password_hasher
 
-    def execute(self, dto: CreateUserInput):
+    def execute(self, dto: CreateUserInput) -> UserOutput:
+        existing_user: User | None = self._repository.get_user_by_email(dto.email)
+
+        if existing_user is not None:
+            raise EmailAlreadyInUse(dto.email)
         
-        user = User(
+        user: User = User(
             id= uuid4(),
             role_id= uuid4(),
             name= dto.name,
@@ -26,12 +32,5 @@ class CreateUser():
         )
 
         user = self._repository.create_user(user)
-
-        output = UserOutput(
-            user.id, 
-            user.role_id, 
-            user.name, 
-            user.email.value
-        )
         
-        return output
+        return UserOutput.from_entity(user)
