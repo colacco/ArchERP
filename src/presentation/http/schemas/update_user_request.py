@@ -1,7 +1,8 @@
-from dataclasses import dataclass
-from typing import Optional
+from uuid import UUID
 
-@dataclass
-class UpdateUserRequest():
-    name: Optional[str] = None
-    email: Optional[str] = None
+from pydantic import BaseModel
+
+class UpdateUserRequest(BaseModel):
+    name: str | None = None
+    email: str | None = None
+    role_id: UUID | None = None

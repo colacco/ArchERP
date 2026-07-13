@@ -31,7 +31,7 @@ def list_user(user_id: UUID, use_case: Annotated[ GetUser, Depends(make_get_user
 
 @router.post("", response_model=UserResponse, status_code=201)
 def create_user(body:CreateUserRequest, use_case: Annotated[ CreateUser , Depends(make_create_user_use_case)]):
-    dto = CreateUserInput(body.name, body.email, body.password)
+    dto = CreateUserInput(body.name, body.email, body.password, body.role_id)
     user = use_case.execute(dto)
     return user
 
