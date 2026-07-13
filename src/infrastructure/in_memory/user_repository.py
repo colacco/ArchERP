@@ -25,12 +25,11 @@ class InMemoryUserRepository(UserRepository):
         return deepcopy(user)
 
     def update_user(self, user: User, id: UUID) -> User:
-        exist_user = self.get_user_by_id(id)
+        index = next((i for i, u in enumerate(self.users) if u.id == id), None)
 
-        if not exist_user:
+        if index is None:
             raise UserNotFound(id)
         
-        index = next(i for i, u in enumerate(self.users) if u.id == id)
         self.users[index] = deepcopy(user)
         
         return user
