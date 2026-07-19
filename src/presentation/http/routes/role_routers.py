@@ -13,16 +13,16 @@ from src.application.dtos.update_role_input import UpdateRoleInput
 from src.presentation.http.schemas.create_role_request import CreateRoleRequest
 from src.presentation.http.schemas.update_role_request import UpdateRoleRequest
 from src.presentation.http.schemas.role_response import RoleResponse
+from src.presentation.http.guards import get_current_user
 from src.presentation.http.dependencies import (
     make_list_roles_use_case, 
     make_get_role_use_case, 
     make_create_role_use_case,
     make_update_role_use_case,
     make_delete_role_use_case
-
 )
 
-router = APIRouter(prefix="/roles", tags=["roles"])
+router = APIRouter(prefix="/roles", tags=["roles"], dependencies=[Depends(get_current_user)])
 
 @router.get("", response_model=list[RoleResponse])
 def list_roles(use_case: Annotated[ ListRoles, Depends(make_list_roles_use_case) ]):
