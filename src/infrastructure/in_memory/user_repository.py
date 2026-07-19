@@ -41,3 +41,10 @@ class InMemoryUserRepository(UserRepository):
             raise UserNotFound(id) 
 
         return self.users.pop(index)
+    
+    def has_user_with_role_id(self, role_id: UUID) -> bool:
+        for user in self.users:
+            if user.role_id == role_id:
+                return True
+            
+        return False
