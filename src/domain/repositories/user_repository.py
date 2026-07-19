@@ -27,3 +27,7 @@ class UserRepository(ABC):
     @abstractmethod
     def delete_user(self, id: UUID) -> User:
         pass
+
+    @abstractmethod
+    def has_user_with_role_id(self, role_id: UUID) -> bool:
+        pass
