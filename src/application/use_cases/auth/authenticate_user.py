@@ -8,10 +8,10 @@ from src.domain.exceptions.auth.invalid_credentials import InvalidCredentials
 
 from src.application.ports.password_hasher import PasswordHasher
 from src.application.ports.token_service import TokenService
-from src.application.dtos.authentication.input import AuthenticateInput
-from src.application.dtos.authentication.generated_token import GeneratedToken
+from src.application.dtos.auth.input import AuthenticateInput
+from src.application.dtos.auth.generated_token import GeneratedToken
 
-class AuthenticateUser:
+class AuthenticateUser():
     def __init__(self, user:UserReader, role:RoleReader, hasher: PasswordHasher, token: TokenService) -> None:
         self._user = user
         self._role = role

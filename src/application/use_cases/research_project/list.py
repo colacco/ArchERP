@@ -5,15 +5,15 @@ from src.domain.repositories.research_project_repository import ResearchProjectR
 from src.domain.exceptions.research_project.invalid_status import InvalidResearchProjectStatus
 from src.domain.exceptions.research_project.invalid_visibility import InvalidResearchProjectVisibility
 
-from src.application.dtos.research_project.list import ListResearchProjectInput
+from src.application.dtos.research_project.list import ListResearchProjectsInput
 from src.application.dtos.research_project.output import ResearchProjectOutput
 from src.application.dtos.shared.paginated_output import PaginatedOutput
 
-class ListResearchProject():
+class ListResearchProjects():
     def __init__(self, repository: ResearchProjectRepository):
         self._repository = repository
 
-    def execute(self, dto: ListResearchProjectInput) -> PaginatedOutput[ResearchProjectOutput]:
+    def execute(self, dto: ListResearchProjectsInput) -> PaginatedOutput[ResearchProjectOutput]:
         status: ResearchProjectStatus | None = None
         visibility: ResearchProjectVisibility | None = None
         

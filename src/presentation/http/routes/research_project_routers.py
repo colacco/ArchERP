@@ -5,14 +5,14 @@ from typing import Annotated, Any
 from uuid import UUID
 
 from src.application.use_cases.research_project.create import CreateResearchProject
-from src.application.use_cases.research_project.list import ListResearchProject
+from src.application.use_cases.research_project.list import ListResearchProjects
 from src.application.use_cases.research_project.get import GetResearchProject
 from src.application.use_cases.research_project.update import UpdateResearchProject
 from src.application.use_cases.research_project.delete import DeleteResearchProject
 from src.application.dtos.research_project.create import CreateResearchProjectInput
 from src.application.dtos.research_project.update import UpdateResearchProjectInput
 from src.application.dtos.shared.paginated_output import PaginatedOutput
-from src.application.dtos.research_project.list import ListResearchProjectInput
+from src.application.dtos.research_project.list import ListResearchProjectsInput
 from src.application.dtos.research_project.output import ResearchProjectOutput
 
 
@@ -56,7 +56,7 @@ def create_research_project(
 
 @router.get("/", response_model= PaginatedResponse[ResearchProjectResponse])
 def list_research_projects(
-    use_case: Annotated[ListResearchProject, Depends(make_list_research_project_use_case)],
+    use_case: Annotated[ListResearchProjects, Depends(make_list_research_project_use_case)],
     limit: int | None = None,
     offset: int | None = None,
     status: str | None = None, 
@@ -64,7 +64,7 @@ def list_research_projects(
     start_date: datetime | None = None, 
     end_date: datetime | None = None,
 ) -> PaginatedResponse[ResearchProjectResponse]:
-    dto = ListResearchProjectInput(
+    dto = ListResearchProjectsInput(
         limit= limit,
         offset= offset,
         status= status,

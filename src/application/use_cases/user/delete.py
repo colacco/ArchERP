@@ -1,6 +1,6 @@
 from uuid import UUID
 
-from src.domain.exceptions.user.user_not_found import UserNotFound
+from src.domain.exceptions.user.not_found import UserNotFound
 from src.domain.repositories.user_repository import UserRepository
 from src.application.dtos.user.output import UserOutput
 

@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from typing import Annotated
 
 from src.application.use_cases.auth.authenticate_user import AuthenticateUser
-from src.application.dtos.authentication.input import AuthenticateInput
+from src.application.dtos.auth.input import AuthenticateInput
 
 from src.presentation.http.schemas.auth.request import LoginRequest
 from src.presentation.http.schemas.auth.login_response import LoginResponse

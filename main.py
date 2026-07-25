@@ -6,7 +6,7 @@ from src.application.dtos.user.create import CreateUserInput
 from src.application.dtos.role.create import CreateRoleInput
 
 from src.presentation.http.routes.auth_routers import router as auth_router
-from src.presentation.http.routes.user_routes import router as user_router
+from src.presentation.http.routes.user_routers import router as user_router
 from src.presentation.http.routes.role_routers import router as role_router
 from src.presentation.http.routes.document_routers import router as document_router
 

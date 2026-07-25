@@ -12,10 +12,10 @@ from src.application.use_cases.role.create import CreateRole
 from src.application.use_cases.research_project.create import CreateResearchProject
 from src.application.use_cases.document.create import CreateDocument
 
-from src.application.use_cases.user.list import GetUsers
+from src.application.use_cases.user.list import ListUsers
 from src.application.use_cases.role.list import ListRoles
-from src.application.use_cases.research_project.list import ListResearchProject
-from src.application.use_cases.document.list import ListDocument
+from src.application.use_cases.research_project.list import ListResearchProjects
+from src.application.use_cases.document.list import ListDocuments
 
 from src.application.use_cases.user.get import GetUser
 from src.application.use_cases.role.get import GetRole
@@ -76,8 +76,8 @@ def make_authenticate_user_use_case() -> AuthenticateUser:
         get_token_service()
     )
 
-def make_get_users_use_case() -> GetUsers:
-    return GetUsers(
+def make_get_users_use_case() -> ListUsers:
+    return ListUsers(
         get_user_repository()
     )
 
@@ -136,8 +136,8 @@ def make_create_research_project_use_case() -> CreateResearchProject:
         get_research_project_repository()
     )
 
-def make_list_research_project_use_case() -> ListResearchProject:
-    return ListResearchProject(
+def make_list_research_project_use_case() -> ListResearchProjects:
+    return ListResearchProjects(
         get_research_project_repository()
     )
 
@@ -163,8 +163,8 @@ def make_create_document_use_case() -> CreateDocument:
         get_token_service()
     )
 
-def make_list_document_use_case() -> ListDocument:
-    return ListDocument(
+def make_list_document_use_case() -> ListDocuments:
+    return ListDocuments(
         get_document_repository()
     )
 

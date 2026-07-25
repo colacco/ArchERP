@@ -3,7 +3,7 @@ from typing import Annotated, Any
 from uuid import UUID
 
 from src.application.use_cases.user.create import CreateUser
-from src.application.use_cases.user.list import GetUsers
+from src.application.use_cases.user.list import ListUsers
 from src.application.use_cases.user.get import GetUser
 from src.application.use_cases.user.update import UpdateUser
 from src.application.use_cases.user.delete import DeleteUser
@@ -26,7 +26,7 @@ from src.presentation.http.dependencies import (
 router = APIRouter(prefix="/users", tags=["users"])
 
 @router.get("", response_model=list[UserResponse])
-def list_users(use_case: Annotated[ GetUsers, Depends(make_get_users_use_case)], current_user: Annotated[dict[str, Any], Depends(get_current_user)]):
+def list_users(use_case: Annotated[ ListUsers, Depends(make_get_users_use_case)], current_user: Annotated[dict[str, Any], Depends(get_current_user)]):
     output = use_case.execute()
     return output
 

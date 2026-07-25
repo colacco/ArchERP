@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime
 
 @dataclass
-class ListResearchProjectInput():
+class ListResearchProjectsInput():
     limit: int | None = None
     offset: int | None = None
     status: str | None = None

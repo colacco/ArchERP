@@ -4,7 +4,7 @@ from typing import Annotated, Any
 from uuid import UUID
 
 from src.application.use_cases.document.create import CreateDocument
-from src.application.use_cases.document.list import ListDocument
+from src.application.use_cases.document.list import ListDocuments
 from src.application.use_cases.document.get import GetDocument
 from src.application.use_cases.document.delete import DeleteDocument
 from src.application.use_cases.document.update import UpdateDocument
@@ -52,7 +52,7 @@ def create_document(
 
 @router.get("/", response_model= PaginatedResponse[DocumentResponse])
 def list_documents(
-    use_case: Annotated[ListDocument, Depends(make_list_document_use_case)],
+    use_case: Annotated[ListDocuments, Depends(make_list_document_use_case)],
     limit: int | None = None,
     offset: int | None = None,
     type: str | None = None,

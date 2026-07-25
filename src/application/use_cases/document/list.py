@@ -10,7 +10,7 @@ from src.application.dtos.document.list import ListDocumentsInput
 from src.application.dtos.document.output import DocumentOutput
 from src.application.dtos.shared.paginated_output import PaginatedOutput
 
-class ListDocument():
+class ListDocuments():
     def __init__(self, repo: DocumentRepository):
         self._repository = repo
 
