@@ -4,16 +4,16 @@ from fastapi import APIRouter, Depends
 from typing import Annotated, Any
 from uuid import UUID
 
-from src.application.use_cases.create_research_project import CreateResearchProject
-from src.application.use_cases.list_research_project import ListResearchProject
-from src.application.use_cases.get_research_project import GetResearchProject
-from src.application.use_cases.update_research_project import UpdateResearchProject
-from src.application.use_cases.delete_research_project import DeleteResearchProject
+from src.application.use_cases.research_project.create import CreateResearchProject
+from src.application.use_cases.research_project.list import ListResearchProject
+from src.application.use_cases.research_project.get import GetResearchProject
+from src.application.use_cases.research_project.update import UpdateResearchProject
+from src.application.use_cases.research_project.delete import DeleteResearchProject
 from src.application.dtos.research_project.create import CreateResearchProjectInput
 from src.application.dtos.research_project.update import UpdateResearchProjectInput
 from src.application.dtos.shared.paginated_output import PaginatedOutput
 from src.application.dtos.research_project.list import ListResearchProjectInput
-from src.application.dtos.research_project.research_project_output import ResearchProjectOutput
+from src.application.dtos.research_project.output import ResearchProjectOutput
 
 
 from src.presentation.http.schemas.research_project.create import CreateResearchProjectRequest

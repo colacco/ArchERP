@@ -5,31 +5,31 @@ from src.domain.repositories.research_project_repository import ResearchProjectR
 from src.application.ports.token_service import TokenService
 from src.application.ports.password_hasher import PasswordHasher
 
-from src.application.use_cases.authenticate_user import AuthenticateUser
+from src.application.use_cases.auth.authenticate_user import AuthenticateUser
 
 from src.application.use_cases.user.create import CreateUser
-from src.application.use_cases.create_role import CreateRole
-from src.application.use_cases.create_research_project import CreateResearchProject
+from src.application.use_cases.role.create import CreateRole
+from src.application.use_cases.research_project.create import CreateResearchProject
 from src.application.use_cases.document.create import CreateDocument
 
-from src.application.use_cases.user.get_users import GetUsers
-from src.application.use_cases.list_roles import ListRoles
-from src.application.use_cases.list_research_project import ListResearchProject
+from src.application.use_cases.user.list import GetUsers
+from src.application.use_cases.role.list import ListRoles
+from src.application.use_cases.research_project.list import ListResearchProject
 from src.application.use_cases.document.list import ListDocument
 
-from src.application.use_cases.user.get_user import GetUser
-from src.application.use_cases.get_role import GetRole
-from src.application.use_cases.get_research_project import GetResearchProject
+from src.application.use_cases.user.get import GetUser
+from src.application.use_cases.role.get import GetRole
+from src.application.use_cases.research_project.get import GetResearchProject
 from src.application.use_cases.document.get import GetDocument
 
-from src.application.use_cases.user.update_user import UpdateUser
-from src.application.use_cases.update_role import UpdateRole
-from src.application.use_cases.update_research_project import UpdateResearchProject
+from src.application.use_cases.user.update import UpdateUser
+from src.application.use_cases.role.update import UpdateRole
+from src.application.use_cases.research_project.update import UpdateResearchProject
 from src.application.use_cases.document.update import UpdateDocument
 
 from src.application.use_cases.user.delete import DeleteUser
-from src.application.use_cases.delete_role import DeleteRole
-from src.application.use_cases.delete_research_project import DeleteResearchProject
+from src.application.use_cases.role.delete import DeleteRole
+from src.application.use_cases.research_project.delete import DeleteResearchProject
 from src.application.use_cases.document.delete import DeleteDocument
 
 from src.infrastructure.in_memory.user_repository import InMemoryUserRepository

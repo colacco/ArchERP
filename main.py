@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from src.application.use_cases.create_role import CreateRole
+from src.application.use_cases.role.create import CreateRole
 from src.application.use_cases.user.create import CreateUser
 from src.application.dtos.user.create import CreateUserInput
 from src.application.dtos.role.create import CreateRoleInput

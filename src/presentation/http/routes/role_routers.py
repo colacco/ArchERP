@@ -2,11 +2,11 @@ from fastapi import APIRouter, Depends
 from typing import Annotated
 from uuid import UUID
 
-from src.application.use_cases.list_roles import ListRoles
-from src.application.use_cases.get_role import GetRole
-from src.application.use_cases.create_role import CreateRole
-from src.application.use_cases.update_role import UpdateRole
-from src.application.use_cases.delete_role import DeleteRole
+from src.application.use_cases.role.list import ListRoles
+from src.application.use_cases.role.get import GetRole
+from src.application.use_cases.role.create import CreateRole
+from src.application.use_cases.role.update import UpdateRole
+from src.application.use_cases.role.delete import DeleteRole
 from src.application.dtos.role.create import CreateRoleInput
 from src.application.dtos.role.update import UpdateRoleInput
 

@@ -3,9 +3,9 @@ from typing import Annotated, Any
 from uuid import UUID
 
 from src.application.use_cases.user.create import CreateUser
-from src.application.use_cases.user.get_users import GetUsers
-from src.application.use_cases.user.get_user import GetUser
-from src.application.use_cases.user.update_user import UpdateUser
+from src.application.use_cases.user.list import GetUsers
+from src.application.use_cases.user.get import GetUser
+from src.application.use_cases.user.update import UpdateUser
 from src.application.use_cases.user.delete import DeleteUser
 
 from src.application.dtos.user.create import CreateUserInput

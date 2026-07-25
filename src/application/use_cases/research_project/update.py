@@ -12,7 +12,7 @@ from src.domain.exceptions.research_project.invalid_visibility import InvalidRes
 from src.domain.exceptions.auth.unauthorized import Unauthorized
 
 from src.application.dtos.research_project.update import UpdateResearchProjectInput
-from src.application.dtos.research_project.research_project_output import ResearchProjectOutput
+from src.application.dtos.research_project.output import ResearchProjectOutput
 
 class UpdateResearchProject():
     def __init__(self, repository: ResearchProjectRepository) -> None:

@@ -9,7 +9,7 @@ from src.domain.exceptions.research_project.invalid_status import InvalidResearc
 from src.domain.exceptions.research_project.invalid_visibility import InvalidResearchProjectVisibility
 
 from src.application.dtos.research_project.create import CreateResearchProjectInput
-from src.application.dtos.research_project.research_project_output import ResearchProjectOutput
+from src.application.dtos.research_project.output import ResearchProjectOutput
 
 class CreateResearchProject():
     def __init__(self, repository: ResearchProjectRepository) -> None:
