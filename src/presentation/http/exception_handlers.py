@@ -1,8 +1,11 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
+from src.domain.exceptions.document.not_found import DocumentNotFound
 from src.domain.exceptions.email_already_in_use import EmailAlreadyInUse
 from src.domain.exceptions.invalid_credentials import InvalidCredentials
+from src.domain.exceptions.document.invalid_format import InvalidDocumentFormat
+from src.domain.exceptions.document.invalid_type import InvalidDocumentType
 from src.domain.exceptions.invalid_research_project_status import InvalidResearchProjectStatus
 from src.domain.exceptions.invalid_research_project_visibility import InvalidResearchProjectVisibility
 from src.domain.exceptions.research_project_already_finished import ResearchProjectAlreadyFinished
@@ -13,12 +16,24 @@ from src.domain.exceptions.unauthorized import Unauthorized
 from src.domain.exceptions.user_not_found import UserNotFound
 
 def register_exception_handlers(app: FastAPI) -> None:
+    @app.exception_handler(DocumentNotFound)
+    def _(request: Request, exc: DocumentNotFound) -> JSONResponse:
+        return JSONResponse(status_code=404, content={"detail": str(exc)})
+
     @app.exception_handler(EmailAlreadyInUse)
     def _(request: Request, exc: EmailAlreadyInUse) -> JSONResponse:
         return JSONResponse(status_code=409, content={"detail": str(exc)})
     
     @app.exception_handler(InvalidCredentials)
     def _(request: Request, exc: InvalidCredentials) -> JSONResponse:
+        return JSONResponse(status_code=401, content={"detail": str(exc)})
+
+    @app.exception_handler(InvalidDocumentFormat)
+    def _(request: Request, exc: InvalidDocumentFormat) -> JSONResponse:
+        return JSONResponse(status_code=401, content={"detail": str(exc)})
+
+    @app.exception_handler(InvalidDocumentType)
+    def _(request: Request, exc: InvalidDocumentType) -> JSONResponse:
         return JSONResponse(status_code=401, content={"detail": str(exc)})
     
     @app.exception_handler(InvalidResearchProjectStatus)
