@@ -2,10 +2,10 @@ from uuid import UUID
 
 from src.domain.repositories.role_repository import RoleRepository
 from src.domain.repositories.user_role_checker import UserRoleChecker
-from src.domain.exceptions.role_not_found import RoleNotFound
-from src.domain.exceptions.role_being_used import RoleBeingUsed
+from src.domain.exceptions.role.not_found import RoleNotFound
+from src.domain.exceptions.role.being_used import RoleBeingUsed
 
-from src.application.dtos.role_output import RoleOutput
+from src.application.dtos.role.output import RoleOutput
 
 class DeleteRole():
     def __init__(self, repository: RoleRepository, user_repository: UserRoleChecker) -> None:

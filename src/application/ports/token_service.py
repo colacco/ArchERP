@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Any
 
-from src.application.dtos.generated_token import GeneratedToken
+from src.application.dtos.authentication.generated_token import GeneratedToken
 
 class TokenService(ABC):
     @abstractmethod

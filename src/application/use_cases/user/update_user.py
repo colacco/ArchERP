@@ -6,13 +6,13 @@ from src.domain.entities.user import User
 from src.domain.value_objects.email import Email
 from src.domain.repositories.role_reader import RoleReader
 from src.domain.repositories.user_repository import UserRepository
-from src.domain.exceptions.user_not_found import UserNotFound
-from src.domain.exceptions.email_already_in_use import EmailAlreadyInUse
-from src.domain.exceptions.role_not_found import RoleNotFound
+from src.domain.exceptions.user.not_found import UserNotFound
+from src.domain.exceptions.user.email_already_in_use import EmailAlreadyInUse
+from src.domain.exceptions.role.not_found import RoleNotFound
 
 
-from src.application.dtos.update_user_input import UpdateUserInput
-from src.application.dtos.user_output import UserOutput
+from src.application.dtos.user.update import UpdateUserInput
+from src.application.dtos.user.output import UserOutput
 
 class UpdateUser():
     def __init__(self, repository: UserRepository, role_repository: RoleReader):

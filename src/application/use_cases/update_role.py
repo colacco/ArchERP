@@ -2,10 +2,10 @@ from uuid import UUID
 from datetime import datetime
 
 from src.domain.repositories.role_repository import RoleRepository
-from src.domain.exceptions.role_not_found import RoleNotFound
+from src.domain.exceptions.role.not_found import RoleNotFound
 
-from src.application.dtos.update_role_input import UpdateRoleInput
-from src.application.dtos.role_output import RoleOutput
+from src.application.dtos.role.update import UpdateRoleInput
+from src.application.dtos.role.output import RoleOutput
 
 class UpdateRole():
     def __init__(self, repository: RoleRepository) -> None:

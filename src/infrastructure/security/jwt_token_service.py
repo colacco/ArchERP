@@ -3,7 +3,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Any
 
 from src.application.ports.token_service import TokenService
-from src.application.dtos.generated_token import GeneratedToken
+from src.application.dtos.authentication.generated_token import GeneratedToken
 
 class JWTTokenService(TokenService):
     def __init__(self, secret: str, expiration_seconds: str):

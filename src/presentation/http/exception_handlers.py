@@ -2,18 +2,18 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
 from src.domain.exceptions.document.not_found import DocumentNotFound
-from src.domain.exceptions.email_already_in_use import EmailAlreadyInUse
-from src.domain.exceptions.invalid_credentials import InvalidCredentials
+from src.domain.exceptions.user.email_already_in_use import EmailAlreadyInUse
+from src.domain.exceptions.auth.invalid_credentials import InvalidCredentials
 from src.domain.exceptions.document.invalid_format import InvalidDocumentFormat
 from src.domain.exceptions.document.invalid_type import InvalidDocumentType
-from src.domain.exceptions.invalid_research_project_status import InvalidResearchProjectStatus
-from src.domain.exceptions.invalid_research_project_visibility import InvalidResearchProjectVisibility
-from src.domain.exceptions.research_project_already_finished import ResearchProjectAlreadyFinished
-from src.domain.exceptions.research_project_not_found import ResearchProjectNotFound
-from src.domain.exceptions.role_not_found import RoleNotFound
-from src.domain.exceptions.role_being_used import RoleBeingUsed
-from src.domain.exceptions.unauthorized import Unauthorized
-from src.domain.exceptions.user_not_found import UserNotFound
+from src.domain.exceptions.research_project.invalid_status import InvalidResearchProjectStatus
+from src.domain.exceptions.research_project.invalid_visibility import InvalidResearchProjectVisibility
+from src.domain.exceptions.research_project.already_finished import ResearchProjectAlreadyFinished
+from src.domain.exceptions.research_project.not_found import ResearchProjectNotFound
+from src.domain.exceptions.role.not_found import RoleNotFound
+from src.domain.exceptions.role.being_used import RoleBeingUsed
+from src.domain.exceptions.auth.unauthorized import Unauthorized
+from src.domain.exceptions.user.not_found import UserNotFound
 
 def register_exception_handlers(app: FastAPI) -> None:
     @app.exception_handler(DocumentNotFound)

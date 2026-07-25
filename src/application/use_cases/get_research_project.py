@@ -2,9 +2,9 @@ from uuid import UUID
 
 from src.domain.entities.research_project import ResearchProject
 from src.domain.repositories.research_project_repository import ResearchProjectRepository
-from src.domain.exceptions.research_project_not_found import ResearchProjectNotFound
+from src.domain.exceptions.research_project.not_found import ResearchProjectNotFound
 
-from src.application.dtos.research_project_output import ResearchProjectOutput
+from src.application.dtos.research_project.research_project_output import ResearchProjectOutput
 
 class GetResearchProject():
     def __init__(self, repository: ResearchProjectRepository) -> None:

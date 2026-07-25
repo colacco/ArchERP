@@ -9,17 +9,17 @@ from src.application.use_cases.list_research_project import ListResearchProject
 from src.application.use_cases.get_research_project import GetResearchProject
 from src.application.use_cases.update_research_project import UpdateResearchProject
 from src.application.use_cases.delete_research_project import DeleteResearchProject
-from src.application.dtos.create_research_project_input import CreateResearchProjectInput
-from src.application.dtos.update_research_project_input import UpdateResearchProjectInput
-from src.application.dtos.paginated_output import PaginatedOutput
-from src.application.dtos.list_research_project_input import ListResearchProjectInput
-from src.application.dtos.research_project_output import ResearchProjectOutput
+from src.application.dtos.research_project.create import CreateResearchProjectInput
+from src.application.dtos.research_project.update import UpdateResearchProjectInput
+from src.application.dtos.shared.paginated_output import PaginatedOutput
+from src.application.dtos.research_project.list import ListResearchProjectInput
+from src.application.dtos.research_project.research_project_output import ResearchProjectOutput
 
 
-from src.presentation.http.schemas.create_research_project_request import CreateResearchProjectRequest
-from src.presentation.http.schemas.update_research_project_request import UpdateResearchProjectRequest
-from src.presentation.http.schemas.research_project_response import ResearchProjectResponse
-from src.presentation.http.schemas.paginated_response import PaginatedResponse, Metadata
+from src.presentation.http.schemas.research_project.create import CreateResearchProjectRequest
+from src.presentation.http.schemas.research_project.update import UpdateResearchProjectRequest
+from src.presentation.http.schemas.research_project.response import ResearchProjectResponse
+from src.presentation.http.schemas.shared.paginated_response import PaginatedResponse, Metadata
 from src.presentation.http.guards import get_current_user
 from src.presentation.http.dependencies import (
     make_create_research_project_use_case, 
@@ -29,9 +29,9 @@ from src.presentation.http.dependencies import (
     make_delete_research_project_use_case
 )
 
-router = APIRouter(prefix="/research-project", tags=["research-projects"], dependencies=[Depends(get_current_user)])
+router = APIRouter(prefix="/research-projects", tags=["research-projects"], dependencies=[Depends(get_current_user)])
 
-@router.post("/")
+@router.post("/", response_model=ResearchProjectResponse)
 def create_research_project(
     body: CreateResearchProjectRequest,
     use_case: Annotated[CreateResearchProject, Depends(make_create_research_project_use_case)], 
@@ -54,7 +54,7 @@ def create_research_project(
 
     return ResearchProjectResponse.model_validate(research_project)
 
-@router.get("/")
+@router.get("/", response_model= PaginatedResponse[ResearchProjectResponse])
 def list_research_projects(
     use_case: Annotated[ListResearchProject, Depends(make_list_research_project_use_case)],
     limit: int | None = None,
@@ -74,8 +74,12 @@ def list_research_projects(
     )
     
     output: PaginatedOutput[ResearchProjectOutput] = use_case.execute(dto)
-    meta: Metadata = Metadata(total= output.total, limit= output.limit, offset= output.offset)
     data: list[ResearchProjectResponse] = []
+    meta: Metadata = Metadata(
+        total= output.total, 
+        limit= output.limit, 
+        offset= output.offset
+    )
     
     for outitem in output.items:
         data.append(ResearchProjectResponse.model_validate(outitem))

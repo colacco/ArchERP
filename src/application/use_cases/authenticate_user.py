@@ -4,12 +4,12 @@ from src.domain.entities.role import Role
 from src.domain.entities.user import User
 from src.domain.repositories.role_reader import RoleReader
 from src.domain.repositories.user_reader import UserReader
-from src.domain.exceptions.invalid_credentials import InvalidCredentials
+from src.domain.exceptions.auth.invalid_credentials import InvalidCredentials
 
 from src.application.ports.password_hasher import PasswordHasher
 from src.application.ports.token_service import TokenService
-from src.application.dtos.authenticate_input import AuthenticateInput
-from src.application.dtos.generated_token import GeneratedToken
+from src.application.dtos.authentication.input import AuthenticateInput
+from src.application.dtos.authentication.generated_token import GeneratedToken
 
 class AuthenticateUser:
     def __init__(self, user:UserReader, role:RoleReader, hasher: PasswordHasher, token: TokenService) -> None:

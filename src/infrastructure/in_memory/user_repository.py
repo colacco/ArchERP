@@ -3,7 +3,7 @@ from uuid import UUID
 
 from src.domain.entities.user import User
 from src.domain.repositories.user_repository import UserRepository
-from src.domain.exceptions.user_not_found import UserNotFound
+from src.domain.exceptions.user.not_found import UserNotFound
 
 class InMemoryUserRepository(UserRepository):
     def __init__(self):

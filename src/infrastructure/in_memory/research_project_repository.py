@@ -3,9 +3,9 @@ from datetime import datetime
 from uuid import UUID
 
 from src.domain.entities.research_project import ResearchProject
-from src.domain.enums.research_project_status import ResearchProjectStatus
-from src.domain.enums.research_project_visibility import ResearchProjectVisibility
-from src.domain.exceptions.research_project_not_found import ResearchProjectNotFound
+from src.domain.enums.research_project.status import ResearchProjectStatus
+from src.domain.enums.research_project.visibility import ResearchProjectVisibility
+from src.domain.exceptions.research_project.not_found import ResearchProjectNotFound
 from src.domain.repositories.research_project_repository import ResearchProjectRepository
 
 class InMemoryResearchProjectRepository(ResearchProjectRepository):
@@ -13,7 +13,8 @@ class InMemoryResearchProjectRepository(ResearchProjectRepository):
         self._research_projects: list[ResearchProject] = []
 
     def _filter_research_projects(
-        self, status: ResearchProjectStatus | None, 
+        self, 
+        status: ResearchProjectStatus | None, 
         visibility: ResearchProjectVisibility | None, 
         start_date: datetime | None, 
         end_date: datetime | None

@@ -1,5 +1,5 @@
 from src.domain.repositories.user_repository import UserRepository
-from src.application.dtos.user_output import UserOutput
+from src.application.dtos.user.output import UserOutput
 
 class GetUsers():
     def __init__(self, repository: UserRepository):

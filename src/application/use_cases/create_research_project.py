@@ -2,14 +2,14 @@ from datetime import datetime
 from uuid import uuid4
 
 from src.domain.entities.research_project import ResearchProject
-from src.domain.enums.research_project_status import ResearchProjectStatus
-from src.domain.enums.research_project_visibility import ResearchProjectVisibility
+from src.domain.enums.research_project.status import ResearchProjectStatus
+from src.domain.enums.research_project.visibility import ResearchProjectVisibility
 from src.domain.repositories.research_project_repository import ResearchProjectRepository
-from src.domain.exceptions.invalid_research_project_status import InvalidResearchProjectStatus
-from src.domain.exceptions.invalid_research_project_visibility import InvalidResearchProjectVisibility
+from src.domain.exceptions.research_project.invalid_status import InvalidResearchProjectStatus
+from src.domain.exceptions.research_project.invalid_visibility import InvalidResearchProjectVisibility
 
-from src.application.dtos.create_research_project_input import CreateResearchProjectInput
-from src.application.dtos.research_project_output import ResearchProjectOutput
+from src.application.dtos.research_project.create import CreateResearchProjectInput
+from src.application.dtos.research_project.research_project_output import ResearchProjectOutput
 
 class CreateResearchProject():
     def __init__(self, repository: ResearchProjectRepository) -> None:

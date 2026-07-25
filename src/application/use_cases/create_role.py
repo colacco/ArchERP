@@ -4,8 +4,8 @@ from datetime import datetime
 from src.domain.entities.role import Role
 from src.domain.repositories.role_repository import RoleRepository
 
-from src.application.dtos.create_role_input import CreateRoleInput
-from src.application.dtos.role_output import RoleOutput
+from src.application.dtos.role.create import CreateRoleInput
+from src.application.dtos.role.output import RoleOutput
 
 class CreateRole():
     def __init__(self, repository: RoleRepository) -> None:

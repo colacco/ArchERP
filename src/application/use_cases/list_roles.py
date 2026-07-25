@@ -1,4 +1,4 @@
-from src.application.dtos.role_output import RoleOutput
+from src.application.dtos.role.output import RoleOutput
 from src.domain.repositories.role_repository import RoleRepository
 
 class ListRoles():

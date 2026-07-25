@@ -2,10 +2,10 @@ from fastapi import APIRouter, Depends
 from typing import Annotated
 
 from src.application.use_cases.authenticate_user import AuthenticateUser
-from src.application.dtos.authenticate_input import AuthenticateInput
+from src.application.dtos.authentication.input import AuthenticateInput
 
-from src.presentation.http.schemas.login_request import LoginRequest
-from src.presentation.http.schemas.login_response import LoginResponse
+from src.presentation.http.schemas.auth.request import LoginRequest
+from src.presentation.http.schemas.auth.login_response import LoginResponse
 from src.presentation.http.dependencies import make_authenticate_user_use_case
 
 router = APIRouter(prefix="/auth", tags=["auth"])

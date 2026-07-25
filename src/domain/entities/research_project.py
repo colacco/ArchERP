@@ -2,8 +2,8 @@ from dataclasses import dataclass
 from datetime import datetime
 from uuid import UUID
 
-from src.domain.enums.research_project_status import ResearchProjectStatus
-from src.domain.enums.research_project_visibility import ResearchProjectVisibility
+from src.domain.enums.research_project.status import ResearchProjectStatus
+from src.domain.enums.research_project.visibility import ResearchProjectVisibility
 
 @dataclass
 class ResearchProject():

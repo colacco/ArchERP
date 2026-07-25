@@ -7,12 +7,12 @@ from src.application.use_cases.get_role import GetRole
 from src.application.use_cases.create_role import CreateRole
 from src.application.use_cases.update_role import UpdateRole
 from src.application.use_cases.delete_role import DeleteRole
-from src.application.dtos.create_role_input import CreateRoleInput
-from src.application.dtos.update_role_input import UpdateRoleInput
+from src.application.dtos.role.create import CreateRoleInput
+from src.application.dtos.role.update import UpdateRoleInput
 
-from src.presentation.http.schemas.create_role_request import CreateRoleRequest
-from src.presentation.http.schemas.update_role_request import UpdateRoleRequest
-from src.presentation.http.schemas.role_response import RoleResponse
+from src.presentation.http.schemas.role.create import CreateRoleRequest
+from src.presentation.http.schemas.role.update import UpdateRoleRequest
+from src.presentation.http.schemas.role.response import RoleResponse
 from src.presentation.http.guards import get_current_user
 from src.presentation.http.dependencies import (
     make_list_roles_use_case, 

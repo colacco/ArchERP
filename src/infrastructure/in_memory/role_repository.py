@@ -3,7 +3,7 @@ from copy import deepcopy
 
 from src.domain.entities.role import Role
 from src.domain.repositories.role_repository import RoleRepository
-from src.domain.exceptions.role_not_found import RoleNotFound
+from src.domain.exceptions.role.not_found import RoleNotFound
 
 class InMemoryRoleRepository(RoleRepository):
     def __init__(self):

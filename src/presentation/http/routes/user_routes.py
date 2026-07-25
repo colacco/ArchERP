@@ -2,18 +2,18 @@ from fastapi import APIRouter, Depends
 from typing import Annotated, Any
 from uuid import UUID
 
-from src.application.use_cases.create_user import CreateUser
-from src.application.use_cases.get_users import GetUsers
-from src.application.use_cases.get_user import GetUser
-from src.application.use_cases.update_user import UpdateUser
-from src.application.use_cases.delete_user import DeleteUser
+from src.application.use_cases.user.create import CreateUser
+from src.application.use_cases.user.get_users import GetUsers
+from src.application.use_cases.user.get_user import GetUser
+from src.application.use_cases.user.update_user import UpdateUser
+from src.application.use_cases.user.delete import DeleteUser
 
-from src.application.dtos.create_user_input import CreateUserInput
-from src.application.dtos.update_user_input import UpdateUserInput
+from src.application.dtos.user.create import CreateUserInput
+from src.application.dtos.user.update import UpdateUserInput
 
-from src.presentation.http.schemas.user_response import UserResponse
-from src.presentation.http.schemas.create_user_request import CreateUserRequest
-from src.presentation.http.schemas.update_user_request import UpdateUserRequest
+from src.presentation.http.schemas.user.response import UserResponse
+from src.presentation.http.schemas.user.create import CreateUserRequest
+from src.presentation.http.schemas.user.update import UpdateUserRequest
 from src.presentation.http.guards import get_current_user, require_role
 from src.presentation.http.dependencies import (
     make_get_users_use_case, 

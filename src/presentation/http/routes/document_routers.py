@@ -17,7 +17,7 @@ from src.application.dtos.shared.paginated_output import PaginatedOutput
 from src.presentation.http.schemas.document.create import CreateDocumentRequest
 from src.presentation.http.schemas.document.update import UpdateDocumentRequest
 from src.presentation.http.schemas.document.response import DocumentResponse
-from src.presentation.http.schemas.paginated_response import PaginatedResponse, Metadata
+from src.presentation.http.schemas.shared.paginated_response import PaginatedResponse, Metadata
 from src.presentation.http.guards import get_current_user
 from src.presentation.http.dependencies import (
     make_create_document_use_case,

@@ -1,8 +1,8 @@
 from uuid import UUID
 
 from src.domain.repositories.research_project_repository import ResearchProjectRepository
-from src.domain.exceptions.research_project_not_found import ResearchProjectNotFound
-from src.domain.exceptions.unauthorized import Unauthorized
+from src.domain.exceptions.research_project.not_found import ResearchProjectNotFound
+from src.domain.exceptions.auth.unauthorized import Unauthorized
 
 class DeleteResearchProject():
     def __init__(self, repository: ResearchProjectRepository):

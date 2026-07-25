@@ -5,12 +5,12 @@ from src.domain.entities.user import User
 from src.domain.value_objects.email import Email
 from src.domain.repositories.user_repository import UserRepository
 from src.domain.repositories.role_reader import RoleReader
-from src.domain.exceptions.email_already_in_use import EmailAlreadyInUse
-from src.domain.exceptions.role_not_found import RoleNotFound
+from src.domain.exceptions.user.email_already_in_use import EmailAlreadyInUse
+from src.domain.exceptions.role.not_found import RoleNotFound
 
 from src.application.ports.password_hasher import PasswordHasher
-from src.application.dtos.create_user_input import CreateUserInput
-from src.application.dtos.user_output import UserOutput
+from src.application.dtos.user.create import CreateUserInput
+from src.application.dtos.user.output import UserOutput
 
 class CreateUser():
     def __init__(self, repository: UserRepository, role_repository: RoleReader, password_hasher: PasswordHasher):

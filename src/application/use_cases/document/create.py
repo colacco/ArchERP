@@ -9,7 +9,7 @@ from src.domain.repositories.document_repository import DocumentRepository
 from src.domain.repositories.research_project_reader import ResearchProjectReader
 from src.domain.exceptions.document.invalid_format import InvalidDocumentFormat
 from src.domain.exceptions.document.invalid_type import InvalidDocumentType
-from src.domain.exceptions.research_project_not_found import ResearchProjectNotFound
+from src.domain.exceptions.research_project.not_found import ResearchProjectNotFound
 
 from src.application.ports.token_service import TokenService
 from src.application.dtos.document.create import CreateDocumentInput
